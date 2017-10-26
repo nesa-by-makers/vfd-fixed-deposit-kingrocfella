@@ -46,18 +46,60 @@
       color: white;
       padding-left: 5px;
     }
+    .form-control{
+      max-width: 100%;
+    }
 }
-    
-    @media screen and (min-width: 992px) {
-        .thankyou{
-          background-color: white;
-          max-width: 80%;
-        }
-        .thankyou p{
-    font-size:10px;
-    text-align: center;
-    padding: 5px;
-    color:	#546194;
+    @media  (min-width:570px) and (max-width: 1199px) {
+      .main{
+        margin-left:90px;
+        background-color: white;
+        max-width: 80%;
+        margin-left: 120px;
+   }
+   .thankyou{
+        background-color: white;
+        max-width: 80%;
+    }
+    .thankyou p{
+        font-size:10px;
+        text-align: center;
+        padding: 5px;
+        color:	#546194;
+    }
+    .blue-bg{
+        background-color: #25215f;
+        max-width: 80%;
+      }
+    .form-horizontal{
+        max-width: 80%;
+        margin-left: 1%; 
+    }
+    .title{
+      max-width: 50%;
+      margin-left: -20px;
+    }
+    .title p{
+      text-align: left;
+      background-color: #25215f;
+      color: white;
+      padding-left: 10px;
+      font-weight: 700;
+    }
+    #whoreferred{
+    display:none;
+  }
+}
+  @media screen and (min-width: 1200px) {
+    .thankyou{
+        background-color: white;
+        max-width: 80%;
+    }
+    .thankyou p{
+        font-size:10px;
+        text-align: center;
+        padding: 5px;
+        color:	#546194;
     }
     .blue-bg{
         background-color: #25215f;
@@ -83,10 +125,12 @@
     }
     .form-horizontal{
       max-width: 80%;
-      margin-left: 6%; 
+      margin-left: 10%; 
     }
     .form-control{
       max-width: 80%;
+      width:60%;
+      background-color: #D0D8F7;
     }
     .title{
       max-width: 38%;
@@ -97,7 +141,7 @@
       background-color: #25215f;
       color: white;
       padding-left: 10px;
-      
+      font-weight: 700;
     }
    .main{
      margin-left:90px;
@@ -105,9 +149,31 @@
      max-width: 80%;
      margin-left: 126.5px;
    } 
-   body{
+    body{
       background-color: #CAC8C8;
+      color:#737373;
     }
+    #duration{
+      margin-left:-100px;
+      width:50%;
+    }
+    #occupation,#phonenumber1,#accnamepayout,#amount,#bankname,#kinname,#kinphonenumber,#kinemail{
+      width:45%;
+    }
+    #accpayout{
+      margin-left: -70px;
+      width: 50%;
+    }
+    #reference{
+      width:56%;
+    }
+    #whoreferred{
+    font-size:9px;
+    padding-right:0px;
+    padding-left:0px;
+    float:left;
+  }
+  
 }
     
     
@@ -118,11 +184,11 @@
             <div class= "col-xs-12 logo"><img src = "logo.jpg" class="img-responsive"> </div>
                 <div class = "fdf">FIXED DEPOSIT PLACEMENT FORM</div>
     </div>
-    <div class= "container thankyou"><p>Thank you for choosing to invest with VFD Bridge. We are pleased to have the opportunity to offer our services to you.<br>
+    <div class= "container thankyou"><p>Thank you for choosing to invest with VFD Bridge. We are pleased to have the opportunity to offer     our services to you.<br>
         Kindly provide ALL your details below (as applicable) to aid the processing of your placement.</p>
     </div>
     <div class="container main">
-            <form class="form-horizontal" action="/action_page.php">
+            <form class="form-horizontal" action="#">
               <div class="form-group">
                 <label class="control-label col-sm-2" for="FullName"style="text-align:left;">FullName:</label>
                 <div class="col-sm-10">
@@ -130,9 +196,9 @@
                 </div>
               </div>
               <div class="form-group">
-                <label class="control-label col-sm-2" for="phonenumber"style="text-align:left;">Phone Number:</label>
+                <label class="control-label col-sm-2" for="phonenumber1"style="text-align:left;">Phone Number:</label>
                 <div class="col-sm-10">          
-                  <input type="text" class="form-control" id="phonenumber" placeholder="Enter Phone Number" name="phonenumber"style="width:45%;">
+                  <input type="text" class="form-control" id="phonenumber1" placeholder="Enter Phone Number" name="phonenumber1">
                 </div>
               </div>
               <div class="form-group">
@@ -150,7 +216,7 @@
               <div class="form-group">
                 <label class="control-label col-sm-2" for="occupation"style="text-align:left;">Occupation:</label>
                 <div class="col-sm-10">          
-                  <input type="text" class="form-control" id="occupation" placeholder="Enter Occupation" name="occupation"style="width:45%;">
+                  <input type="text" class="form-control" id="occupation" placeholder="Enter Occupation" name="occupation">
                 </div>
               </div>
               <div class = "container title">
@@ -159,67 +225,67 @@
               <div class="form-group">
                 <label class="control-label col-sm-4" for="duration"style="text-align:left;">Proposed Duration:</label>
                 <div class="col-sm-8">          
-                  <input type="text" class="form-control" id="duration" placeholder="Enter Proposed Duration" name="duration" style="margin-left:-100px;width:50%;">
+                  <input type="text" class="form-control" id="duration" placeholder="Enter Proposed Duration" name="duration">
                 </div>
               </div>
               <div class="form-group">
                 <label class="control-label col-sm-2" for="amount"style="text-align:left;">Amount:</label>
                 <div class="col-sm-10">          
-                  <input type="text" class="form-control" id="amount" placeholder="Enter Amount" name="amount"style="width:45%;">
+                  <input type="text" class="form-control" id="amount" placeholder="Enter Amount" name="amount">
                 </div>
               </div>
               <div class = "container title">
                 <p>PAYOUT DETAILS</p>
               </div>
               <div class="form-group">
-                <label class="control-label col-sm-2" for="accpayout"style="text-align:left;">Account Number:</label>
-                <div class="col-sm-10">          
-                  <input type="text" class="form-control" id="accpayout" placeholder="Enter Account Number" name="accpayout"style="width:45%;">
+                <label class="control-label col-sm-3" for="accpayout"  style="text-align:left;">Account Number:</label>
+                <div class="col-sm-9">          
+                  <input type="text" class="form-control" id="accpayout" placeholder="Enter Account Number" name="accpayout">
                 </div>
               </div>
               <div class="form-group">
                 <label class="control-label col-sm-2" for="accnamepayout"style="text-align:left;">Account Name:</label>
                 <div class="col-sm-10">          
-                  <input type="text" class="form-control" id="accnamepayout" placeholder="Enter Account Name" name="accnamepayout"style="width:45%;">
+                  <input type="text" class="form-control" id="accnamepayout" placeholder="Enter Account Name" name="accnamepayout">
                 </div>
               </div>
               <div class="form-group">
                 <label class="control-label col-sm-2" for="bankname"style="text-align:left;">Name Of Bank:</label>
                 <div class="col-sm-10">          
-                  <input type="text" class="form-control" id="bankname" placeholder="Enter Name Of Bank" name="bankname"style="width:45%;">
+                  <input type="text" class="form-control" id="bankname" placeholder="Enter Name Of Bank" name="bankname">
                 </div>
               </div>
               <div class = "container title">
                 <p>NEXT-OF-KIN DETAILS</p>
               </div>
               <div class="form-group">
-                <label class="control-label col-sm-2" for="name"style="text-align:left;">Name:</label>
+                <label class="control-label col-sm-2" for="kinname"style="text-align:left;">Name:</label>
                 <div class="col-sm-10">          
-                  <input type="text" class="form-control" id="name" placeholder="Enter Name" name="name"style="width:45%;">
+                  <input type="text" class="form-control" id="kinname" placeholder="Enter Name" name="kinname">
                 </div>
               </div>
               <div class="form-group">
-                <label class="control-label col-sm-2" for="phonenumber"style="text-align:left;">Phone Number:</label>
+                <label class="control-label col-sm-2" for="phonenumber2"style="text-align:left;">Phone Number:</label>
                 <div class="col-sm-10">          
-                  <input type="text" class="form-control" id="phonenumber" placeholder="Enter Phone Number" name="phonenumber"style="width:45%;">
+                  <input type="text" class="form-control" id="kinphonenumber" placeholder="Enter Phone Number" name="kinphonenumber">
                 </div>
               </div>
               <div class="form-group">
-                <label class="control-label col-sm-2" for="email"style="text-align:left;">Email Address:</label>
+                <label class="control-label col-sm-2" for="kinemail"style="text-align:left;">Email Address:</label>
                 <div class="col-sm-10">          
-                  <input type="text" class="form-control" id="email" placeholder="Enter Email" name="email"style="width:45%;">
+                  <input type="text" class="form-control" id="kinemail" placeholder="Enter Email" name="kinemail">
                 </div>
               </div>
               <div class="form-group">
-                <label class="control-label col-sm-2" for="email"style="text-align:left;padding-right:0px;">Email Address:</label>
-                <label class="control-label col-sm-1" for="space"style="font-size:9px;padding-right:0px;padding-left:0px;float:left;">(Who referred the company to you)</label>
+                <label class="control-label col-sm-2" for="email"style="text-align:left;padding-right:0px;">Reference:</label>
+                <label class="control-label col-sm-1" for="space" id = "whoreferred">(Who referred the company to you)</label>
                 <div class="col-sm-9">          
-                  <input type="text" class="form-control" id="reference" placeholder="Enter Reference" name="reference"style="width:39%;">
+                  <input type="text" class="form-control" id="reference" placeholder="Enter Reference" name="reference">
                 </div>
               </div>
               <div class="form-group">        
                 <div class="col-sm-offset-2 col-sm-10">
-                  <button type="submit" class="btn btn-default" style="margin-top:40px; margin-left:70px;">Submit</button>
+                  <button type="submit" class="btn btn-default" style="margin-top:40px; margin-left:35%;">Submit</button>
                 </div>
               </div>
             </form>
