@@ -1,0 +1,143 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <style>
+        .container{
+            background-color: #D71212;
+           max-width: 70%;
+           margin-top: 5%;
+        }
+        body{
+            background-color: rgb(219, 219, 219);
+        }
+        h2{
+            color: white;
+            text-align: center;
+        }
+        .btn{
+            border:none;
+            height:40px;
+            background-color: #C8C8C8;
+            color:black;
+            width:200px;
+            font-size: 16px;
+        }
+        #inputtext{
+            padding-bottom: 5px;
+            height:40px;
+            width: 650px;
+        }
+        #table1{
+            margin-bottom: 20px;
+        }
+        .demo1{
+            max-width: 67.3%;
+            margin-left: 152px;
+            background-color:rgb(241, 239, 239);
+            padding-left: 40px;
+            list-style-type: none;
+            height: 40px;
+            padding-top: 10px;
+           
+        }
+        .cancel{
+            float:right;
+            background-color: red;
+            margin-right: 193px;
+            width:5%;
+            margin-top:-40px;
+            height: 40px;
+            text-align: center;
+            color:white;
+            padding-top: 10px;
+            border:none;
+        }
+        .done{
+            background-color: rgb(102, 101, 101);
+            max-width: 67.3%;
+            margin-left: 152px;
+            padding-left: 40px;
+            list-style-type: none;
+            height: 40px;
+            padding-top: 10px;
+            text-decoration: line-through;
+            color: white;
+        }
+        .demo1:hover {
+            background: rgb(179, 176, 176);
+        }
+        .done:hover {
+            background: rgb(102, 101, 101);
+        }
+        ul li {
+            cursor: pointer;
+        }
+       
+         
+    </style>
+    <script>
+        $(document).ready(function(){
+            i = 1;
+            $(".btn").click(function(e){
+                e.preventDefault();
+                
+                var input = $("#inputtext").val();
+                //check for empty strings
+                if (input == "" || input == " " ){
+                    alert("The Title field cannot be empty!");
+                }
+                else {
+                    //create the cancel button and list item. Then use i to tag the corresponding id of the list item to the cancel button
+                    var X = $("<button class='cancel' id = 'cancel" + i + "' onclick=$('#demo" + i + "').remove();$('#cancel" + i + "').remove()></button>").text("X");
+                    $("#list").append("<li class = 'demo1' id='demo" + i + "'>"+input +"</li>");
+                    $("#list").append(X);
+                    
+                    //clear input textfield on focus
+                    $('#inputtext').focus(function(){
+                        $(this).val('');
+                    });
+                    //toggle the tasks when clicked!
+                    $('#demo'+i).click(function(){
+                        $(this).toggleClass("done");
+                        
+                    }); 
+                    i++;
+                }
+            });  
+            
+        });
+       
+           
+                
+    </script>
+</head>
+<body>
+
+    <div class="container">
+        <span id = "headertext"><h2>My To Do List</h2></span>
+        <div id = "subcontainer">
+               <table align = center id = "table1">
+                    <tr>
+                        <td><input type="text" id = "inputtext" placeholder="Title..."/> </td>
+                        <td><button class = "btn">Add</button></td>
+                    </tr>
+                </table>
+        </div> 
+    </div>
+    
+    <div>
+        <ul id = list >
+
+        </ul>
+    </div>
+</body>
+
+
+
+
+</html>

@@ -31,8 +31,9 @@
     //get the customerID
     if($connection->query($query) == true){
         $customerid = $connection->insert_id;
+        
     }
-
+    echo $query;
     //inserting into payoutdb
     $query1 = "INSERT INTO PAYOUTDB(AccNoPayout, AccNamePayout, BankNamePayout, CustomerID) VALUES('".$accpayout."','".$accnamepayout."','".$bankname."',".$customerid.");";
     //get the payoutID
