@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+        <link rel = "stylesheet" href  = "css/style.css">
+        
+        <script>
+        $(document).ready(function(){
+            i= 1;
+            $("#addnew img").click(function(){
+                var X = $("<span id = 'cancel" + i + "' class='glyphicon glyphicon-remove cancel'id = 'cancel" + i + "' onclick=$('#newnote" + i + "').remove();$('#cancel" + i + "').remove()></span>");
+                 $("#notes").append('<div id = "x"><li class = "newnote" id = "newnote' + i + '"><div class="col-sm-5"><input maxlength = "8" type="text" class="form-control" id="notetitle" placeholder="Untitled" name="notetitle"></div> <div class="col-sm-5"><textarea maxlength = "33" class="form-control" id="notetext" placeholder="Your Content here" name="notetext"></textarea></div></li></div>');
+                $('#notes').append(X);
+            i++;
+            });
+          
+        });
+        </script>
+</head>
+<body>
+   
+<div id = "addnew">
+        <img src = "addnew.png">
+</div>
+
+<div class = "box">
+    <ul id = "notes">
+       
+
+    </ul>
+</div>
+<p id = "plus">Add New Note</p>
+</body>
+
+</html>

@@ -1,0 +1,249 @@
+@media screen and (max-width: 568px) {
+    #addnew img{
+        position: left;
+        max-width: 100px;
+        margin-left: 70px;
+        margin-top: 10px;
+        cursor: pointer; 
+    }
+    body{
+        background-color: rgb(20, 20, 20);
+    }
+    .newnote{
+        margin-top: 25px;
+        background-image:url(addnew.png);
+        width: 50vw;
+        height:35vh;
+        margin-left: -15px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: 50% 50%;
+        padding: 0px;
+        -webkit-filter: drop-shadow(5px 5px 5px rgb(187, 178, 99));
+        filter: drop-shadow(5px 5px 5px rgb(83, 75, 36));
+        transition: all 200ms ease-in;
+       transform: scale(1);
+    }
+    .box{
+        margin-top: 30px;
+    }
+    #notetitle{
+        margin-top:33px;
+        margin-left: -10px;
+        width:200px;
+        border: none;
+        background-color: transparent;
+        box-shadow: none;
+        font-family: 'Pacifico', cursive;
+        font-weight: 700;
+        font-size: 20px;
+    }
+    #notetext{
+        margin-top:25px;
+        margin-left: -15px;
+        width:120px;
+        height: 85px;
+        border:none;
+        background-color: transparent;
+        box-shadow: none;
+        font-family: 'Pacifico', cursive;
+        font-size: 15px;
+    }
+    ul li {
+        float: left;
+    }
+    .cancel{
+        color: red;
+        margin-left: -80px;
+        float: left;
+        margin-top: 13%;
+        font-size: 30px;
+        cursor: pointer;
+    }
+    #plus{
+       margin-top: -20%;
+       margin-left: 85px;
+       cursor: pointer;
+       color: green;
+       font-weight: 800;
+       font-size: 8px;
+    }
+    #x{
+       transition: all 200ms ease-in;
+       transform: scale(1);
+       
+    }
+    #x:hover{
+       transition: all 200ms ease-in;
+       transform: scale(1.02);
+    }
+}
+@media  (min-width:570px) and (max-width: 1199px) {
+
+    #addnew img{
+        position: left;
+        max-width: 35%;;
+        margin-left: 30%;
+        margin-top: 10px;
+        cursor: pointer; 
+    }
+    body{
+        background-color: rgb(20, 20, 20);
+    }
+    .newnote{
+        margin-top: 45px;
+        background-image:url(addnew.png);
+        width: 75vw;
+        height:40vh;
+        margin-left: 50px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: 50% 50%;
+        padding: 0px;
+        -webkit-filter: drop-shadow(5px 5px 5px rgb(187, 178, 99));
+        filter: drop-shadow(5px 5px 5px rgb(83, 75, 36));
+        transition: all 200ms ease-in;
+       transform: scale(1);
+    }
+    .box{
+        margin-top: 30px;
+    }
+    #notetitle{
+        margin-top:73px;
+        margin-left: 150px;
+        width:250px;
+        border: none;
+        background-color: transparent;
+        box-shadow: none;
+        font-family: 'Pacifico', cursive;
+        font-weight: 700;
+        font-size: 30px;
+        
+    }
+    #notetext{
+        margin-top:95%;
+        margin-left: -200px;
+        width:450px;
+        height: 145px;
+        border:none;
+        background-color: transparent;
+        box-shadow: none;
+        font-family: 'Pacifico', cursive;
+        font-size: 35px;
+        
+    }
+    ul li {
+        float: left;
+    }
+    .cancel{
+        color: red;
+        margin-left: -20%;
+        float: left;
+        margin-top: 15%;
+        font-size: 30px;
+        cursor: pointer;
+    }
+    #plus{
+       margin-top: -25%;
+       margin-left: 40%;
+       cursor: pointer;
+       color: green;
+       font-weight: 800;
+       font-size: 15px;
+    }
+    #x{
+       transition: all 200ms ease-in;
+       transform: scale(1);
+       
+    }
+    #x:hover{
+       transition: all 200ms ease-in;
+       transform: scale(1.02);
+    }
+}
+@media screen and (min-width: 1200px) {
+#addnew img{
+    position: left;
+    max-width: 100px;
+    margin-left: 10px;
+    margin-top: 10px;
+    cursor: pointer; 
+}
+
+body{
+    background-color: rgb(20, 20, 20);
+}
+.newnote{
+    margin-top: 25px;
+    background-image:url(addnew.png);
+    width: 22vw;
+    height:30vh;
+    margin-left: 100px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 50%;
+    padding: 0px;
+    -webkit-filter: drop-shadow(5px 5px 5px rgb(187, 178, 99));
+    filter: drop-shadow(5px 5px 5px rgb(83, 75, 36));
+    transition: all 200ms ease-in;
+   transform: scale(1);
+}
+.box{
+    margin-top: 30px;
+}
+#notetitle{
+    margin-top:33px;
+    margin-left: 20px;
+    width:150px;
+    border: none;
+    background-color: transparent;
+    box-shadow: none;
+    font-family: 'Pacifico', cursive;
+    font-weight: 700;
+    font-size: 18px;
+    
+}
+#notetext{
+    margin-top:75px;
+    margin-left: -90px;
+    width:180px;
+    height: 85px;
+    border:none;
+    background-color: transparent;
+    box-shadow: none;
+    font-family: 'Pacifico', cursive;
+    font-size: 15px;
+    
+}
+ul li {
+    
+    float: left;
+    
+
+}
+.cancel{
+    color: red;
+    margin-left: -90px;
+    float: left;
+    margin-top: 3%;
+    font-size: 30px;
+    cursor: pointer;
+}
+#plus{
+   margin-top: -7%;
+   margin-left: 27px;
+   cursor: pointer;
+   color: green;
+   font-weight: 800;
+   font-size: 8px;
+}
+#x{
+   transition: all 200ms ease-in;
+   transform: scale(1);
+   
+}
+#x:hover{
+   transition: all 200ms ease-in;
+   transform: scale(1.02);
+}
+}
