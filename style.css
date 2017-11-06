@@ -1,0 +1,166 @@
+@media screen and (max-width: 568px) {
+    .thankyou {
+font-size:15px;
+text-align: justify;
+padding: 15px;
+color:	#546194;
+}
+.logo{
+    width: 90%;
+    height: auto;
+    padding-left: 0px;
+    margin-top: 5px; 
+}
+.logo img{
+    width: 90%;
+    height: auto;
+    padding-top: 10px;
+    
+}
+.blue-bg{
+    background-color: #25215f;
+    max-width: 100%;
+  }
+  .fdf{
+    text-align: center;
+    color: white;
+}
+.title{
+  max-width: 70%;
+  margin-left: -15px;
+}
+.title p{
+  
+  background-color: #25215f;
+  color: white;
+  padding-left: 5px;
+}
+.form-control{
+  max-width: 100%;
+}
+}
+@media  (min-width:570px) and (max-width: 1199px) {
+  .main{
+    margin-left:90px;
+    background-color: white;
+    max-width: 80%;
+    margin-left: 120px;
+}
+.thankyou{
+    background-color: white;
+    max-width: 80%;
+}
+.thankyou p{
+    font-size:10px;
+    text-align: center;
+    padding: 5px;
+    color:	#546194;
+}
+.blue-bg{
+    background-color: #25215f;
+    max-width: 80%;
+  }
+.form-horizontal{
+    max-width: 80%;
+    margin-left: 1%; 
+}
+.title{
+  max-width: 50%;
+  margin-left: -20px;
+}
+.title p{
+  text-align: left;
+  background-color: #25215f;
+  color: white;
+  padding-left: 10px;
+  font-weight: 700;
+}
+#whoreferred{
+display:none;
+}
+}
+@media screen and (min-width: 1200px) {
+.thankyou{
+    background-color: white;
+    max-width: 80%;
+}
+.thankyou p{
+    font-size:10px;
+    text-align: center;
+    padding: 5px;
+    color:	#546194;
+}
+.blue-bg{
+    background-color: #25215f;
+    max-width: 80%;
+  }
+  
+.logo{
+    width: 230px;
+    height: auto;
+    padding-left: 80px;
+    margin-top: 5px; 
+}
+.logo img{
+    width: 90%;
+    height: auto;
+    padding-top: 10px;
+    
+}
+.fdf{
+    text-align: right;
+    color: white;
+    padding: 25px;
+}
+.form-horizontal{
+  max-width: 80%;
+  margin-left: 10%; 
+}
+.form-control{
+  max-width: 80%;
+  width:60%;
+  background-color: #D0D8F7;
+}
+.title{
+  max-width: 38%;
+  margin-left: -20px;
+}
+.title p{
+  text-align: left;
+  background-color: #25215f;
+  color: white;
+  padding-left: 10px;
+  font-weight: 700;
+}
+.main{
+ margin-left:90px;
+ background-color: white;
+ max-width: 80%;
+ margin-left: 126.5px;
+} 
+body{
+  background-color: #CAC8C8;
+  color:#737373;
+}
+#duration{
+  margin-left:-100px;
+  width:50%;
+}
+#occupation,#phonenumber1,#accnamepayout,#amount,#bankname,#kinname,#kinphonenumber,#kinemail{
+  width:45%;
+}
+#accpayout{
+  margin-left: -70px;
+  width: 50%;
+}
+#reference{
+  width:56%;
+}
+#whoreferred{
+font-size:9px;
+padding-right:0px;
+padding-left:0px;
+float:left;
+}
+
+}
