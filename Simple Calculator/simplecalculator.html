@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>A Simple Calculator </title>
+	<style>
+		.keypad{
+			padding-top: 70px;
+		}
+		#disp{
+			background-color: #070100;
+			color: #ea4f33;
+		}
+		#disp2{
+			background-color:	#d7d9dd;
+		}
+		body{
+			background-color: #d4d7db;
+		}
+		header{
+			text-align: center;
+			padding-top: 30px;
+		}
+		#copy{
+			 position: fixed;     
+       		text-align: center;    
+       		bottom: 0px; 
+       		width: 100%;
+			
+		}
+	</style>
+	<header> <h1>A Simple Calculator !</h1>
+	<h4>(Press C to start a fresh calculation)</h4>
+	</header>
+</head>
+<body>
+		<div class = "keypad">
+		<table align = "center">
+		<tr><td><input type= "text" id = "disp2"></td></tr>
+		<tr><td><input type= "text" id = "disp"></td></tr>
+		</table>
+		<table align = "center">
+ 		<tr><td><button onclick = mytext0()  id = "n0" value= "0"> 0</button></td>
+  		<td><button onclick = mytext1() id = "n1" value ="1"> 1</button></td>
+   		<td><button onclick = mytext2() id = "n2" value = "2"> 2</button></td>
+		<td><button onclick = mydivide() id = "ndivide" value= "/"> &divide;</button></td></tr>
+    	<tr><td><button onclick = mytext3() id = "n3" value = "3"> 3</button></td>
+	 	<td><button onclick = mytext4() id = "n4" value = "4"> 4</button></td>
+	  	<td><button onclick = mytext5() id = "n5" value = "5"> 5</button></td>
+		<td><button onclick = mytimes() id = "ntimes" value = "*"> &times;</button></td></tr>
+	   	<tr><td><button onclick = mytext6() id = "n6" value = "6"> 6</button></td>
+	    <td><button onclick = mytext7() id = "n7" value = "7"> 7</button></td>
+		<td><button onclick = mytext8() id = "n8" value = "8"> 8</button></td>
+		<td><button onclick = myequals() id = "nequals"> =</button></td></tr>
+		<tr><td><button onclick = mytext9() id = "n9" value = "9"> 9</button></td>
+		<td><button onclick = myadd() id = "nadd" value = "+"> +</button></td>
+		<td><button onclick = myminus() id= "nminus" value = "-"> -</button></td>
+		<td><button onclick = myclear() id = "nclear" value = "">C</button></td></tr>
+		</table>
+		</div>
+ 	<script>
+		
+		function mytext0(){
+			var x0= document.getElementById("n0").value;
+			document.getElementById("disp").value += x0;
+			}
+			function mytext1(){
+			var x1= document.getElementById("n1").value;
+			document.getElementById("disp").value += x1;
+			}
+			function mytext2(){
+			var x2= document.getElementById("n2").value;
+			document.getElementById("disp").value += x2;
+			}
+			function mytext3(){
+			var x3= document.getElementById("n3").value;
+			document.getElementById("disp").value += x3;
+			}
+			function mytext4(){
+			var x4= document.getElementById("n4").value;
+			document.getElementById("disp").value += x4;
+			}
+			function mytext5(){
+			var x5= document.getElementById("n5").value;
+			document.getElementById("disp").value += x5;
+			}
+			function mytext6(){
+			var x6= document.getElementById("n6").value;
+			document.getElementById("disp").value += x6;
+			}
+			function mytext7(){
+			var x7= document.getElementById("n7").value;
+			document.getElementById("disp").value += x7;
+			}
+			function mytext8(){
+			var x8= document.getElementById("n8").value;
+			document.getElementById("disp").value += x8;
+			}
+			function mytext9(){
+			var x9= document.getElementById("n9").value;
+			document.getElementById("disp").value += x9;
+			}
+			function myclear(){
+			var xc= document.getElementById("nclear").value;
+			document.getElementById("disp").value = xc;
+			document.getElementById("disp2").value = xc;
+			}
+			
+			var operation;
+			var firstnumber;
+			var secondnumber;
+			var result;
+			function myadd(){  
+   				 operation = "+";  
+ 				 firstnumber = parseInt(document.getElementById("disp").value);  
+ 				document.getElementById("disp").value = " ";  
+ 				document.getElementById("disp2").value = firstnumber + operation;
+				}
+			function mydivide(){  
+   				 operation = "/";  
+ 				 firstnumber = parseInt(document.getElementById("disp").value);  
+ 				 document.getElementById("disp").value = " ";  
+ 				 document.getElementById("disp2").value = firstnumber + operation;
+				}
+			function mytimes(){  
+   				 operation = "*";  
+ 				 firstnumber = parseInt(document.getElementById("disp").value);  
+ 				 document.getElementById("disp").value = " ";  
+ 				 document.getElementById("disp2").value = firstnumber + operation;
+				}
+			function myminus(){  
+   				 operation = "-";  
+ 				 firstnumber = parseInt(document.getElementById("disp").value);  
+ 				 document.getElementById("disp").value = " ";  
+ 				 document.getElementById("disp2").value = firstnumber + operation;
+				}	
+				
+			function myequals(){  
+   				secondnumber = parseInt(document.getElementById("disp").value);  
+   				if (operation == "+") {  
+  					result = firstnumber +  secondnumber;	
+ 				}
+				else if (operation == "/") { 
+					result = firstnumber / secondnumber;
+				}
+				else if (operation == "-") { 
+					result = firstnumber - secondnumber;
+				}
+				else if (operation == "*") { 
+					result = firstnumber * secondnumber;
+				}
+				document.getElementById("disp2").value = firstnumber + operation + secondnumber;
+				document.getElementById("disp").value = result;
+			} 
+ 	</script>
+
+	<h4 id = "copy">&copy; 2017 Kingsley. </h4>
+</body>
+</html>
