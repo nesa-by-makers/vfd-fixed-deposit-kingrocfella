@@ -24,7 +24,7 @@ $query = $connection->prepare("INSERT INTO employeedb (FirstName, LastName, Emai
 $query->bind_param("ssssss",$firstname,$lastname,$useremail,$position,$phonenumber,$userpassword);
 
 if($query->execute() == true){
-    header("Location: http://localhost/vfdform/clientlogin/VfdForm.html"); /* Redirect to form */ 
+    header("Location: http://localhost/vfdform/vfd-fixed-deposit-kingrocfella/ClientLoginAssignment/VfdForm.php"); /* Redirect to form */ 
     exit();
 }
 else {

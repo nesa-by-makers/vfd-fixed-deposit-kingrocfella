@@ -37,7 +37,7 @@
 <div class="container">
 
     <div id = "logo"><img src = "logo.jpg" class="img-responsive center-block"/>
-        <h3>Login</h3>
+        <h3>Employee Login</h3>
     </div>
   <ul class="nav nav-tabs nav-justified">
     <li class="active"><a data-toggle="tab" href="#signup">Sign Up</a></li>
@@ -47,8 +47,8 @@
   <div class="tab-content">
     <div id="signup" class="tab-pane fade in active">
       <h5>New User? Sign Up for Free!</h5>
-      <p style = "color: red;" id = "error1">Incorrect Email or Password!</p>
       <p id = "error"></p>
+      <p style = "color: red;" id = "error1">Incorrect Email or Password or Position</p>
     <form class="form-horizontal" id = "signup" action = "EmployeeSignup.php" method="POST">
         <div class="form-group">
             <div class="col-sm-6">
@@ -87,10 +87,20 @@
     </div>
     <div id="signin" class="tab-pane fade">
       <h5>Already a user? Sign in!</h5>
+      
         <form class="form-horizontal" action = "EmployeeLogin.php" method ="POST">
             <div class="form-group">
                 <div class="col-sm-7">
                     <input type="email" class="form-control" id="useremail" placeholder="Enter email" name="loginemail" required>
+                </div>
+                 
+                <div class = "col-sm-12">
+                        <label for="position" style = "color: white;padding:5px;">Position:</label>
+                    <select class="form-control" name="position" style = "max-width:55%; margin-left:25%;">
+                        <option value = "Accounting Officer">Accounting Officer</option>
+                        <option value = "Supervisor">Supervisor</option>
+                        <option value = "C.E.O">C.E.O</option>
+                      </select>
                 </div>
                 <div class="col-sm-7">
                     <input type="password" class="form-control" id="userpassword" placeholder="Enter password" name="loginpassword" required>

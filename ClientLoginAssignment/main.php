@@ -26,6 +26,8 @@
     $kinemail = $_POST["kinemail"];
     $reference = $_POST["reference"];
 
+     
+
     //inserting into fixeddepositdb
     $query = "INSERT INTO FIXEDDEPOSITDB (FullName, PhoneNumber, HomeAddress, OfficeAddress, Occupation,  NextOfKinName, NextOfKinPhoneNo,NextOfKinEmail,Reference) VALUES('".$fullname."','".$phonenumber."','".$resaddr."','".$offaddr."','".$occupation."','".$kinname."','".$kinphonenumber."','".$kinemail."','".$reference."');"; 
     //get the customerID
@@ -33,7 +35,7 @@
         $customerid = $connection->insert_id;
         
     }
-    echo $query;
+    
     //inserting into payoutdb
     $query1 = "INSERT INTO PAYOUTDB(AccNoPayout, AccNamePayout, BankNamePayout, CustomerID) VALUES('".$accpayout."','".$accnamepayout."','".$bankname."',".$customerid.");";
     //get the payoutID
@@ -53,13 +55,5 @@
     }
 
         $connection->close();
-
-
-
-
-
-
-
-
-
 ?>
+

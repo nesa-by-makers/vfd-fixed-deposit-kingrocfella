@@ -24,7 +24,7 @@ if ($verifyquery->num_rows > 0 ){
         $getuseremail = $row['Email'];
         $getpassword = $row['Password'];
         if (($getuseremail == $loginemail) && ($getpassword == $loginpassword)){
-            header("Location: http://localhost/vfdform/clientlogin/VfdForm.html"); /* Redirect to form */ 
+            header("Location: http://localhost/vfdform/vfd-fixed-deposit-kingrocfella/ClientLoginAssignment/VfdForm.php"); /* Redirect to form */ 
             exit();
         }   
     }

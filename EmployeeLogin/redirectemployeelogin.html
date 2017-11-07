@@ -48,7 +48,7 @@
     <div id="signup" class="tab-pane fade in active">
       <h5>New User? Sign Up for Free!</h5>
       <p id = "error"></p>
-      <p style = "color: red;" id = "error1">You have already signed-up! Proceed to Sign In</p>
+      <p style = "color: red;" id = "error1">You have already signed-up. Proceed to Sign In</p>
     <form class="form-horizontal" id = "signup" action = "EmployeeSignup.php" method="POST">
         <div class="form-group">
             <div class="col-sm-6">
@@ -87,10 +87,20 @@
     </div>
     <div id="signin" class="tab-pane fade">
       <h5>Already a user? Sign in!</h5>
+      
         <form class="form-horizontal" action = "EmployeeLogin.php" method ="POST">
             <div class="form-group">
                 <div class="col-sm-7">
                     <input type="email" class="form-control" id="useremail" placeholder="Enter email" name="loginemail" required>
+                </div>
+                 
+                <div class = "col-sm-12">
+                        <label for="position" style = "color: white;padding:5px;">Position:</label>
+                    <select class="form-control" name="position" style = "max-width:55%; margin-left:25%;">
+                        <option value = "Accounting Officer">Accounting Officer</option>
+                        <option value = "Supervisor">Supervisor</option>
+                        <option value = "C.E.O">C.E.O</option>
+                      </select>
                 </div>
                 <div class="col-sm-7">
                     <input type="password" class="form-control" id="userpassword" placeholder="Enter password" name="loginpassword" required>
