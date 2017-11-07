@@ -254,7 +254,7 @@
                         $query = "SELECT FirstName,LastName From employeedb WHERE Position = 'Accounting Officer' ;";
                         $aoquery = $connection->query($query);
                         while($row = $aoquery->fetch_assoc()){
-                            echo "<option value = '".$row['FirstName']." ".$row['LastName']."' >".$row['FirstName']."  ".$row['LastName']."</option>";
+                            echo "<option value = '".$row['FirstName']." ".$row['LastName']."' >".$row['FirstName']." ".$row['LastName']."</option>";
                         }
                     ?>
                 </select>

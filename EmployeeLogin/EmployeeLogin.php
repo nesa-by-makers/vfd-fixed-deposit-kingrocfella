@@ -15,9 +15,17 @@ $loginemail = $_POST["loginemail"];
 $loginpassword = $_POST["loginpassword"];
 $loginposition = $_POST["position"];
 
+
 //verify the user
 $verifyemployee = 'SELECT * FROM EMPLOYEEDB;';
 $verifyquery = $connection->query($verifyemployee);
+
+//begin session
+session_start();
+$getaofullname = 'SELECT FirstName,LastName FROM EMPLOYEEDB WHERE Email = "'.$loginemail.'";';
+$query = $connection->query($getaofullname);
+$result  = $query->fetch_assoc();
+$_SESSION['employeename'] = $result['FirstName']." ".$result['LastName'];
 
 //loop through the database and log the verified user in..
 if ($verifyquery->num_rows > 0 ){
@@ -26,17 +34,17 @@ if ($verifyquery->num_rows > 0 ){
         $getpassword = $row['Password'];
         $getposition = $row['Position'];
         if (($getpassword == $loginpassword) && (($getuseremail == $loginemail) && ($getposition == $loginposition))){
-            header("Location: http://localhost/vfdform/vfd-fixed-deposit-kingrocfella/ClientLoginAssignment/VfdForm.php"); /* Redirect to form */ 
-            exit();
+                if ($getposition == 'Accounting Officer'){
+                    header("Location: http://localhost/vfdform/vfd-fixed-deposit-kingrocfella/ClientLoginAssignment/AccountOfficerdashboard.php"); //Redirect to form 
+                    exit();
+                }
+                
         }   
     }
-    header("Location: http://localhost/vfdform/vfd-fixed-deposit-kingrocfella/EmployeeLogin/wrongemployeelogin.html"); /* Redirect to signin page */ 
+    header("Location: http://localhost/vfdform/vfd-fixed-deposit-kingrocfella/EmployeeLogin/wrongemployeelogin.html"); // Redirect to signin page 
     exit();
     } 
-
-
-
-
-
-
+    
 ?>
+
+

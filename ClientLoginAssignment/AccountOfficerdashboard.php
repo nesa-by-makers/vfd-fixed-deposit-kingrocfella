@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 <body>
+    
     <table class="table table-bordered">
     <thead>
    <tr> <th>Full Name</th>
@@ -14,34 +15,40 @@
         <th>Res. Address</th>
         <th>Office Address</th>
         <th>Occupation</th>
+        <th>Reference </th>
         <th>Duration</th>
         <th>Amount</th>
         <th>AccountNo</th>
         <th>AccountName</th>
         <th>BankName</th>
-        <th>NOK Name</th>
-        <th>NOK Phone No.</th>
-        <th>NOK Email </th>
-        <th>Reference </th>
+        <th>Vetted by <?php session_start(); echo $_SESSION["employeename"];   ?></th>
     </tr>   
     </thead>
     <?php
+        
+        
+        
             $connection = new mysqli('localhost','root','Stoneage1992.','vfd');
-            $query = "SELECT * FROM FIXEDDEPOSITDB;";
-            $query2 = "SELECT * FROM PAYOUTDB;";
-            $query3 = "SELECT * FROM PLACEMENTDB;";
+            $query = "SELECT * FROM FIXEDDEPOSITDB WHERE Reference = '".$_SESSION["employeename"]."';";
+
             $fdquery = $connection->query($query);
-            $payquery = $connection->query($query2);
-            $placement = $connection->query($query3);
-                for ($i = 0; $i <= $fdquery->num_rows; $i++){
-                        $row = $fdquery->fetch_assoc();
-                        $rowpayout =  $payquery->fetch_assoc(); 
-                        $rowplace =  $placement->fetch_assoc();
-                        echo "<tr> <td>".$row['FullName']."</td><td>".$row['PhoneNumber']."</td> <td>".$row['HomeAddress']."</td><td>".$row['OfficeAddress']."</td><td>".$row['Occupation']."</td><td>".$rowplace['ProposedDuration']."</td><td>".$rowplace['Amount']."</td><td>".$rowpayout['AccNoPayout']."</td><td>".$rowpayout['AccNamePayout']."</td><td>".$rowpayout['BankNamePayout']."</td><td>".$row['NextOfKinName']."</td><td>".$row['NextOfKinPhoneNo']."</td><td>".$row['NextOfKinEmail']."</td><td>".$row['Reference']."</td></tr>";
-                        
-                      
-                }
+            while($row = $fdquery->fetch_assoc()){
+              echo "<tr> <td>".$row['FullName']."</td><td>".$row['PhoneNumber']."</td> <td>".$row['HomeAddress']."</td><td>".$row['OfficeAddress']."</td><td>".$row['Occupation']."</td><td>".$row['Reference']."</td>";
+               
+               $query2 = "SELECT * FROM PAYOUTDB WHERE CustomerID = ".$row['ID'].";";
+               $query3 = "SELECT * FROM PLACEMENTDB WHERE CustomerID = ".$row['ID'].";";
+               $payquery = $connection->query($query2);
+               $placement = $connection->query($query3);
+               while($rowplace =  $placement->fetch_assoc()){
+                echo "<td>".$rowplace['ProposedDuration']."</td><td>".$rowplace['Amount']."</td>";
+              }
+              while ($rowpayout = $payquery->fetch_assoc()){
+                echo "<td>".$rowpayout['AccNoPayout']."</td><td>".$rowpayout['AccNamePayout']."</td><td>".$rowpayout['BankNamePayout']."</td><td> <input type='checkbox' value=''></td></tr>";
+              }
+            }
+
     ?>
+    
     </table>
-</body>
+            </body>             
 </html>
