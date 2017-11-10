@@ -17,18 +17,21 @@ $loginpassword = $_POST["loginpassword"];
 //verify the user
 $verifyuser = 'CALL verifyuser();';
 $verifyquery = $connection->query($verifyuser);
-
+// begin a session
+session_start();
 //loop through the database and log the verified user in..
 if ($verifyquery->num_rows > 0 ){
     while($row = $verifyquery->fetch_assoc()){
         $getuseremail = $row['Email'];
         $getpassword = $row['Password'];
         if (($getuseremail == $loginemail) && ($getpassword == $loginpassword)){
+            $_SESSION['clientmail'] = $loginemail;
+            $_SESSION['clientpass'] = $loginpassword;
             header("Location: http://localhost/vfdform/vfd-fixed-deposit-kingrocfella/ClientLoginAssignment/VfdForm.php"); /* Redirect to form */ 
             exit();
         }   
     }
-    header("Location: http://localhost/vfdform/clientlogin/wrongemail.html"); /* Redirect to signin page */ 
+    header("Location: http://localhost/vfdform/vfd-fixed-deposit-kingrocfella/ClientLoginAssignment/wrongemail.html"); /* Redirect to signin page */ 
     exit();
 }
 

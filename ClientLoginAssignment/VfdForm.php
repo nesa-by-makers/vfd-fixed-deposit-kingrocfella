@@ -1,3 +1,12 @@
+<?php
+session_start();
+if((!isset($_SESSION['clientmail'])) && (!isset($_SESSION['clientpass'])))
+{
+  header('Location: http://localhost/vfdform/vfd-fixed-deposit-kingrocfella/ClientLoginAssignment/clientlogin.html');
+  exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -71,6 +80,11 @@
         if (isNaN(f7)){
             $("#err6").empty();
             $("#err6").append("Only Numeric digits are allowed!");
+            return false;
+        }
+        else if (f7 > 360 || f7 < 30){
+            $("#err6").empty();
+            $("#err6").append("Please enter a number between 30 - 360!");
             return false;
         }
         else{
@@ -245,10 +259,25 @@
               </div>
               <div class="form-group">
                 <label class="control-label col-sm-2" for="reference"style="text-align:left;padding-right:0px;">Reference:</label>
-                <label class="control-label col-sm-1" for="space" id = "whoreferred">(Who referred the company to you)</label>
+                <label class="control-label col-sm-1" for="space" id = "whoreferred">(Who referred you to the company)</label>
                 <div class="col-sm-9">          
-                <select name= "reference" id= "reference" class="form-control" required>
+                <select name= "referral" id= "reference" class="form-control" required>
                 <option selected="selected" value="">-- Select your referral --</option>
+                    <?php
+                        $connection = new mysqli('localhost','root','Stoneage1992.','vfd');
+                        $query = "SELECT FirstName,LastName From employeedb;";
+                        $aoquery = $connection->query($query);
+                        while($row = $aoquery->fetch_assoc()){
+                            echo "<option value = '".$row['FirstName']." ".$row['LastName']."' >".$row['FirstName']." ".$row['LastName']."</option>";
+                        }
+                    ?>
+                </select>
+              <div class="form-group">
+                <label class="control-label col-sm-2" for="reference"style="text-align:left;padding-right:0px;">Account Officer:</label>
+                <label class="control-label col-sm-1" for="space" id = "whoreferred">(Choose an account officer)</label>
+                <div class="col-sm-9">          
+                <select name= "accountofficer" id= "ao" class="form-control" required>
+                <option selected="selected" value="">-- Select an Account Officer --</option>
                     <?php
                         $connection = new mysqli('localhost','root','Stoneage1992.','vfd');
                         $query = "SELECT FirstName,LastName From employeedb WHERE Position = 'Accounting Officer' ;";

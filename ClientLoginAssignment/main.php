@@ -1,4 +1,10 @@
 <?php
+    session_start();
+    if((!isset($_SESSION['clientmail'])) && (!isset($_SESSION['clientpass'])))
+    {
+      header('Location: http://localhost/vfdform/vfd-fixed-deposit-kingrocfella/ClientLoginAssignment/clientlogin.html');
+      exit();
+    }
 
     $servername= "localhost";
     $username = "root";
@@ -24,12 +30,13 @@
     $kinname = $_POST["kinname"];
     $kinphonenumber = $_POST["kinphonenumber"];
     $kinemail = $_POST["kinemail"];
-    $reference = $_POST["reference"];
+    $referral = $_POST["referral"];
+    $accountofficer = $_POST["accountofficer"];
 
      
 
     //inserting into fixeddepositdb
-    $query = "INSERT INTO FIXEDDEPOSITDB (FullName, PhoneNumber, HomeAddress, OfficeAddress, Occupation,  NextOfKinName, NextOfKinPhoneNo,NextOfKinEmail,Reference) VALUES('".$fullname."','".$phonenumber."','".$resaddr."','".$offaddr."','".$occupation."','".$kinname."','".$kinphonenumber."','".$kinemail."','".$reference."');"; 
+    $query = "INSERT INTO FIXEDDEPOSITDB (FullName, PhoneNumber, HomeAddress, OfficeAddress, Occupation,  NextOfKinName, NextOfKinPhoneNo,NextOfKinEmail,Referral, AccountingOfficer) VALUES('".$fullname."','".$phonenumber."','".$resaddr."','".$offaddr."','".$occupation."','".$kinname."','".$kinphonenumber."','".$kinemail."','".$referral."','".$accountofficer."');"; 
     //get the customerID
     if($connection->query($query) == true){
         $customerid = $connection->insert_id;
@@ -57,3 +64,16 @@
         $connection->close();
 ?>
 
+<html>
+<head>
+</head>
+<body>
+<form action = "http://localhost/vfdform/vfd-fixed-deposit-kingrocfella/ClientLoginAssignment/clientsignout.php">
+              <button> Log Out </button>
+
+            </form>
+
+</body>
+
+
+</html>
