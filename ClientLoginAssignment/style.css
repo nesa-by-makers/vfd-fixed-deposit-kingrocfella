@@ -137,9 +137,10 @@ display:none;
  background-color: white;
  max-width: 80%;
  margin-left: 126.5px;
+ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 } 
 body{
-  background-color: #CAC8C8;
+  background-color: rgb(240, 233, 233);
   color:#737373;
 }
 #duration{

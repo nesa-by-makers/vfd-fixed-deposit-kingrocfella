@@ -1,10 +1,7 @@
 <?php
 session_start();
-if((isset($_SESSION['employeeloginemail'])) &&(isset($_SESSION['employeeloginpass'])) == false )
-{
-  header('Location: http://localhost/vfdform/vfd-fixed-deposit-kingrocfella/EmployeeLogin/Employee.html');
-  exit();
-}
+
+
 
 ?>
 
@@ -14,7 +11,6 @@ if((isset($_SESSION['employeeloginemail'])) &&(isset($_SESSION['employeeloginpas
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Rubik" rel="stylesheet">
@@ -58,33 +54,33 @@ body{
     padding-left: 30px;
   }
   </style>
-  </head>
-  <body>
   <div id = "logo">
 <img src = 'whitelogo.png' class="img-responsive"/>
     <p id = "welcome"> Dear  <?php  echo $_SESSION["employeename"]; ?> !  </p>
     
-    <form action = "treasurydashboard.php">  
+    <form action = "AccountOfficerdashboard.php">  
      <button class="btn btn-default btn-sm">
        <h5><b>Back to Dashboard</b></h5>
     </button>
     </form>
 </div>  
-<h3> View all Paid Transactions!</h3>
+<h3> View all your Verifications!</h3>
 <div class = "container">
-    <table class="table table-bordered">
+<table class="table table-bordered">
     <thead>
-   <tr> <th>Full Name</th>
-        <th>Phone Number</th>
-        <th>Duration</th>
-        <th>Amount</th>
-        <th>AccountNumber[Payout]</th>
-        <th>AccountName[Payout]</th>
-        <th>BankName[Payout]</th>
-        <th>Paid by</th>
-        <th>Date of Payment</th>
-        
-    </tr>   
+   <tr>
+   <th>Full Name</th>
+   <th>Phone Number</th>
+   <th>Res. Address</th>
+   <th>Office Address</th>
+   <th>Occupation</th>
+   <th>Duration</th>
+   <th>Amount</th>
+   <th>Interest Rate</th>
+   <th>AccountNo</th>
+   <th>AccountName</th>
+   <th>BankName</th>     
+  </tr>   
     </thead>
     <?php
          
@@ -92,44 +88,36 @@ body{
         
             $connection = new mysqli('localhost','root','Stoneage1992.','vfd');
            
-            $query = "SELECT * FROM FIXEDDEPOSITDB WHERE ID IN (SELECT CustomerID FROM treasurydashboard);";
-            
-          
-          
+            $query = "SELECT * FROM FIXEDDEPOSITDB WHERE AccountingOfficer = '".$_SESSION["employeename"]."' AND ID IN (SELECT CustomerID FROM aodashboard);";
+            $query4 = "UPDATE placementdb SET InterestRate = (SELECT Rates FROM rates WHERE TenorID = (SELECT ID FROM interesttenor WHERE placementdb.ProposedDuration BETWEEN MinimumDays AND MaximumDays)  AND DepositID = (SELECT ID FROM interestdeposit WHERE placementdb.Amount BETWEEN MinimumDeposit AND MaximumDeposit));";
+            $interest = $connection->query($query4);
             $fdquery = $connection->query($query);
             while($row = $fdquery->fetch_assoc()){
              
-              echo "<tr> <td>".$row['FullName']."</td><td>".$row['PhoneNumber']."</td>";
-              
-            
-            
-              
-            
-              
+              echo "<tr> <td>".$row['FullName']."</td><td>".$row['PhoneNumber']."</td> <td>".$row['HomeAddress']."</td><td>".$row['OfficeAddress']."</td><td>".$row['Occupation']."</td>";
+                
                $query2 = "SELECT * FROM PAYOUTDB WHERE CustomerID = ".$row['ID'].";";
                $query3 = "SELECT * FROM PLACEMENTDB WHERE CustomerID = ".$row['ID'].";";
+            
                $payquery = $connection->query($query2);
                $placement = $connection->query($query3);
+               
                while($rowplace =  $placement->fetch_assoc()){
-                echo "<td>".$rowplace['ProposedDuration']."</td><td>".$rowplace['Amount']."</td>";
-                $query4 = "SELECT * FROM treasurydashboard WHERE CustomerID = ".$row['ID'].";";
-                $trquery = $connection->query($query4);
-                while ($rowtr = $trquery->fetch_assoc()){
+                echo "<td>".$rowplace['ProposedDuration']." Days"."</td><td>"."&#8358;".$rowplace['Amount']."</td><td>".$rowplace['InterestRate'].'%'."</td>"; 
+                
               
               while ($rowpayout = $payquery->fetch_assoc()){
-                echo "<td>".$rowpayout['AccNoPayout']."</td><td>".$rowpayout['AccNamePayout']."</td><td>".$rowpayout['BankNamePayout']."</td><td>".$rowtr['CashierName']."</td><td>".$rowtr['DateOfPayment']."</td></tr>";
+                echo "<td>".$rowpayout['AccNoPayout']."</td><td>".$rowpayout['AccNamePayout']."</td><td>".$rowpayout['BankNamePayout']."</td></tr>";
 
               }
             }
-        }
-    }
+          }
           
             
             
     ?>
     
     </table>
-            
-            </div> 
-            </body>                     
+        
+  </div>                    
 </html>

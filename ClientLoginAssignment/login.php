@@ -18,7 +18,9 @@ $loginpassword = $_POST["loginpassword"];
 $verifyuser = 'CALL verifyuser();';
 $verifyquery = $connection->query($verifyuser);
 // begin a session
-session_start();
+    session_start();
+
+
 //loop through the database and log the verified user in..
 if ($verifyquery->num_rows > 0 ){
     while($row = $verifyquery->fetch_assoc()){
@@ -27,11 +29,13 @@ if ($verifyquery->num_rows > 0 ){
         if (($getuseremail == $loginemail) && ($getpassword == $loginpassword)){
             $_SESSION['clientmail'] = $loginemail;
             $_SESSION['clientpass'] = $loginpassword;
-            header("Location: http://localhost/vfdform/vfd-fixed-deposit-kingrocfella/ClientLoginAssignment/VfdForm.php"); /* Redirect to form */ 
+            $_SESSION['clientname'] = $row['FirstName']." ".$row['LastName'];
+            $_SESSION['clientnum'] = $row['PhoneNumber'];
+            header("Location: http://localhost/vfdform/vfd-fixed-deposit-kingrocfella/ClientLoginAssignment/clientdashboard.php");  
             exit();
         }   
     }
-    header("Location: http://localhost/vfdform/vfd-fixed-deposit-kingrocfella/ClientLoginAssignment/wrongemail.html"); /* Redirect to signin page */ 
+    header("Location: http://localhost/vfdform/vfd-fixed-deposit-kingrocfella/ClientLoginAssignment/wrongemail.html"); 
     exit();
 }
 

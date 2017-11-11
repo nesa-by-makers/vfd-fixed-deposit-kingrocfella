@@ -10,7 +10,7 @@ if((!isset($_SESSION['clientmail'])) && (!isset($_SESSION['clientpass'])))
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>VFD FD Form</title>
+  <title>VFD FixedDeposit Form</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -160,14 +160,14 @@ if((!isset($_SESSION['clientmail'])) && (!isset($_SESSION['clientpass'])))
               <div class="form-group">
                 <label class="control-label col-sm-2" for="FullName"style="text-align:left;">FullName:</label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" id="fullname" placeholder="Enter Full Name" name="FullName" required>
+                  <input type="text" class="form-control" id="fullname" value= "<?php echo $_SESSION['clientname'];   ?> " name="FullName" readonly>
                   <span id = "err1" style ="color: #AE0000;"></span>
                 </div>
               </div>
               <div class="form-group">
                 <label class="control-label col-sm-2" for="phonenumber1"style="text-align:left;">Phone Number:</label>
                 <div class="col-sm-10">          
-                  <input type="text" class="form-control" id="phonenumber1" placeholder="Enter Phone Number" name="phonenumber" required>
+                  <input type="text" class="form-control" id="phonenumber1" value= "<?php echo $_SESSION['clientnum'];?>" name="phonenumber">
                   <span id = "err2" style ="color: #AE0000;"></span><span id = "numb" style ="color: #AE0000;"></span>
                 </div>
               </div>
@@ -272,8 +272,10 @@ if((!isset($_SESSION['clientmail'])) && (!isset($_SESSION['clientpass'])))
                         }
                     ?>
                 </select>
+                </div>
+                </div>
               <div class="form-group">
-                <label class="control-label col-sm-2" for="reference"style="text-align:left;padding-right:0px;">Account Officer:</label>
+                <label class="control-label col-sm-2" for="ao" style="text-align:left;margin-right:0px;">Account Officer:</label>
                 <label class="control-label col-sm-1" for="space" id = "whoreferred">(Choose an account officer)</label>
                 <div class="col-sm-9">          
                 <select name= "accountofficer" id= "ao" class="form-control" required>
@@ -287,13 +289,12 @@ if((!isset($_SESSION['clientmail'])) && (!isset($_SESSION['clientpass'])))
                         }
                     ?>
                 </select>
-                  
-                </div>
+              </div>
               </div>
               <div class="form-group">        
                 <div class="col-sm-offset-2 col-sm-10">
                   <button type="submit" class="btn btn-default" style="margin-top:40px; margin-left:35%;" onclick="validate()">Submit</button>
-                </div>
+                
               </div>
             </form>
           </div>

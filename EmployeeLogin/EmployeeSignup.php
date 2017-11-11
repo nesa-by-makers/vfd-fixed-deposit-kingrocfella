@@ -18,14 +18,15 @@ $useremail = $_POST["email"];
 $phonenumber = $_POST["phonenumber"];
 $position = $_POST["position"];
 $userpassword = $_POST["password"];
+$employeename = $firstname." ".$lastname;
 //begin session
 session_start();
 $_SESSION['employeeloginemail'] = $useremail;
 $_SESSION['employeeloginpass'] = $userpassword;
 $_SESSION['employeename'] = $firstname." ".$lastname;
 // insert into clientdatabase
-$query = $connection->prepare("INSERT INTO employeedb (FirstName, LastName, Email, Position, PhoneNumber, Password) VALUES (?,?,?,?,?,?)");
-$query->bind_param("ssssss",$firstname,$lastname,$useremail,$position,$phonenumber,$userpassword);
+$query = $connection->prepare("INSERT INTO employeedb (FirstName, LastName, Email, Position, PhoneNumber, Password, FullName) VALUES (?,?,?,?,?,?,?)");
+$query->bind_param("sssssss",$firstname,$lastname,$useremail,$position,$phonenumber,$userpassword,$employeename);
 
 if($query->execute() == true){
     if ($position == 'Accounting Officer'){

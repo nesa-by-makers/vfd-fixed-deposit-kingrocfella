@@ -17,7 +17,7 @@
         die("The connection failed   ".connect_error);
     }
     // init form variables
-    $fullname = $_POST["FullName"];
+    $fullname = $_SESSION['clientname'];
     $phonenumber = $_POST["phonenumber"];
     $resaddr = $_POST["resaddr"];
     $offaddr = $_POST["offaddr"];
@@ -55,7 +55,9 @@
 
     
     if($connection->query($query2) == true){
-        echo "Thanks for filling out this form. We will process your request and get in touch with you shortly!";
+        session_start();
+        $_SESSION['ao'] = $accountofficer;
+        header("Location: formthanks.html");
     }
     else {
         echo "Error connecting to database".$connection->error;
