@@ -111,7 +111,7 @@ body{
                $payquery = $connection->query($query2);
                $placement = $connection->query($query3);
                while($rowplace =  $placement->fetch_assoc()){
-                echo "<td>".$rowplace['ProposedDuration']."</td><td>".$rowplace['Amount']."</td>";
+                echo "<td>".$rowplace['ProposedDuration']." Days"."</td><td>"."&#8358;".$rowplace['Amount']."</td>";
                 $query4 = "SELECT * FROM treasurydashboard WHERE CustomerID = ".$row['ID'].";";
                 $trquery = $connection->query($query4);
                 while ($rowtr = $trquery->fetch_assoc()){

@@ -17,13 +17,13 @@ $lastname = $_POST["lastname"];
 $useremail = $_POST["email"];
 $phonenumber = $_POST["phonenumber"];
 $userpassword = $_POST["password"];
-
+$fullname = $firstname." ".$lastname;
 //start a session
 
 
 // insert into clientdatabase
-$query = $connection->prepare("INSERT INTO CLIENTDB (FirstName, LastName, Email, PhoneNumber, Password) VALUES (?,?,?,?,?)");
-$query->bind_param("sssss",$firstname,$lastname,$useremail,$phonenumber,$userpassword);
+$query = $connection->prepare("INSERT INTO CLIENTDB (FirstName, LastName, Email, PhoneNumber, Password, FullName) VALUES (?,?,?,?,?,?)");
+$query->bind_param("ssssss",$firstname,$lastname,$useremail,$phonenumber,$userpassword,$fullname);
 
 if($query->execute() == true){
     session_start();
@@ -33,7 +33,7 @@ if($query->execute() == true){
     $_SESSION['clientnum'] = $phonenumber;
     
 
-    header("Location: http://localhost/vfdform/vfd-fixed-deposit-kingrocfella/ClientLoginAssignment/VfdForm.php"); /* Redirect to form */ 
+    header("Location: clientdashboard.php"); /* Redirect to form */ 
     exit();
 }
 else {

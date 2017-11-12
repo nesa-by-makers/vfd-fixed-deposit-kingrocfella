@@ -115,7 +115,7 @@ if((isset($_SESSION['employeeloginemail'])) &&(isset($_SESSION['employeeloginpas
         <th>Phone Number</th>
         <th>Res. Address</th>
         <th>Office Address</th>
-        <th>Occupation</th>
+        <th>Email Address</th>
         <th>Duration</th>
         <th>Amount</th>
         <th>Interest Rate</th>
@@ -138,16 +138,19 @@ if((isset($_SESSION['employeeloginemail'])) &&(isset($_SESSION['employeeloginpas
             $fdquery = $connection->query($query);
             while($row = $fdquery->fetch_assoc()){
              
-              echo "<tr> <td>".$row['FullName']."</td><td>".$row['PhoneNumber']."</td> <td>".$row['HomeAddress']."</td><td>".$row['OfficeAddress']."</td><td>".$row['Occupation']."</td>";
+              echo "<tr> <td>".$row['FullName']."</td><td>".$row['PhoneNumber']."</td> <td>".$row['HomeAddress']."</td><td>".$row['OfficeAddress']."</td>";
                 
                $query2 = "SELECT * FROM PAYOUTDB WHERE CustomerID = ".$row['ID'].";";
                $query3 = "SELECT * FROM PLACEMENTDB WHERE CustomerID = ".$row['ID'].";";
-            
+                $query4 = "SELECT Email FROM CLIENTDB WHERE FullName ='".$row['FullName']."';";
+                
+                
                $payquery = $connection->query($query2);
                $placement = $connection->query($query3);
-               
+               $email = $connection->query($query4);
                while($rowplace =  $placement->fetch_assoc()){
-                echo "<td>".$rowplace['ProposedDuration']." Days"."</td><td>"."&#8358;".$rowplace['Amount']."</td><td>".$rowplace['InterestRate'].'%'."</td>"; 
+                   while ($rowemail = $email->fetch_assoc()){
+                echo "<td>".$rowemail['Email']."</td><td>".$rowplace['ProposedDuration']." Days"."</td><td>"."&#8358;".$rowplace['Amount']."</td><td>".$rowplace['InterestRate'].'%'."</td>"; 
                 
               
               while ($rowpayout = $payquery->fetch_assoc()){
@@ -156,9 +159,10 @@ if((isset($_SESSION['employeeloginemail'])) &&(isset($_SESSION['employeeloginpas
               }
             }
           }
+           
+        }
+            
           
-            
-            
     ?>
     
     </table>
