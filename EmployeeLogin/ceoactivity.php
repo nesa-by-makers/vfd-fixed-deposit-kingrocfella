@@ -78,7 +78,7 @@ body{
    <th>Duration</th>
    <th>Amount</th>
    <th>Interest Rate</th>
-   <th>AccountNo</th>
+   <th>Amount Earned</th>
    <th>AccountName</th>
    <th>BankName</th>     
   </tr>   
@@ -106,11 +106,13 @@ body{
                $placement = $connection->query($query3);
                
                while($rowplace =  $placement->fetch_assoc()){
+                $int = ($rowplace['InterestRate']/100)* $rowplace['Amount'];
+                $intscale =  (($int/365) * $rowplace['ProposedDuration']) + $rowplace['Amount'];
                 echo "<td>".$rowplace['ProposedDuration']." Days"."</td><td>"."&#8358;".$rowplace['Amount']."</td><td>".$rowplace['InterestRate'].'%'."</td>"; 
                 
               
               while ($rowpayout = $payquery->fetch_assoc()){
-                echo "<td>".$rowpayout['AccNoPayout']."</td><td>".$rowpayout['AccNamePayout']."</td><td>".$rowpayout['BankNamePayout']."</td></tr>";
+                echo "<td>"."&#8358;".round($intscale,2)."</td><td>".$rowpayout['AccNamePayout']."</td><td>".$rowpayout['BankNamePayout']."</td></tr>";
 
               }
             }

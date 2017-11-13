@@ -76,7 +76,9 @@ if((isset($_SESSION['employeeloginemail'])) &&(isset($_SESSION['employeeloginpas
       a:visited {
           text-decoration: none;
       }
-     
+     .table{
+         margin-left: -8px;
+     }
       
   </style>
  
@@ -117,9 +119,9 @@ if((isset($_SESSION['employeeloginemail'])) &&(isset($_SESSION['employeeloginpas
         <th>Occupation</th>
         <th>Duration</th>
         <th>Amount</th>
-        <th>Interest Rate</th>
-        <th>AccountName[Payout]</th>
-        <th>BankName[Payout]</th>
+        <th>Amount Earned</th>
+        <th>AccountName[Pay]</th>
+        <th>BankName[Pay]</th>
         <th>Already vetted by</th>
         <th>Vet by <?php echo $_SESSION["employeename"];   ?></th>
     </tr>   
@@ -149,7 +151,9 @@ if((isset($_SESSION['employeeloginemail'])) &&(isset($_SESSION['employeeloginpas
                $payquery = $connection->query($query2);
                $placement = $connection->query($query3);
                while($rowplace =  $placement->fetch_assoc()){
-                echo "<td>".$rowplace['ProposedDuration']." Days"."</td><td>"."&#8358;".$rowplace['Amount']."</td><td>".$rowplace['InterestRate'].'%'."</td>";
+                $int = ($rowplace['InterestRate']/100)* $rowplace['Amount'];
+                $intscale =  (($int/365) * $rowplace['ProposedDuration']) + $rowplace['Amount'];
+                echo "<td>".$rowplace['ProposedDuration']." Days"."</td><td>"."&#8358;".$rowplace['Amount']."</td><td>"."&#8358;".round($intscale,2)."</td>";
                
               }
               while ($rowpayout = $payquery->fetch_assoc()){

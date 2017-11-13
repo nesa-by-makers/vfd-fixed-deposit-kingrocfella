@@ -92,6 +92,7 @@ body{
         <th>Duration</th>
         <th>Amount</th>
         <th>Interest Rate</th>
+        <th>Amount Expected</th>
         <th>AccountNo [Payout]</th>
         <th>AccountName [Payout]</th>
         <th>BankName [Payout]</th>
@@ -117,7 +118,9 @@ $query3 = "SELECT * FROM PAYOUTDB WHERE CustomerID =".$custid['ID'].";";
 $placequery = $connection->query($query2);
 $payquery = $connection->query($query3);
 while ($place = $placequery->fetch_assoc()){
-  echo "<tr> <td>".$place['ProposedDuration']." Days"."</td><td>"."&#8358;".$place['Amount']."</td><td> ".$place['InterestRate']."%"."</td>";
+  $int = ($place['InterestRate']/100)* $place['Amount'];
+  $intscale =  (($int/365) * $place['ProposedDuration']) + $place['Amount'];
+  echo "<tr> <td>".$place['ProposedDuration']." Days"."</td><td>"."&#8358;".$place['Amount']."</td><td> ".$place['InterestRate']."%"."</td><td>"."&#8358;".round($intscale,2)."</td>";
     while ($pay = $payquery->fetch_assoc()){
       echo "<td>".$pay['AccNoPayout']."</td><td> ".$pay['AccNamePayout']."</td><td> ".$pay['BankNamePayout']."</td></tr>";
     }

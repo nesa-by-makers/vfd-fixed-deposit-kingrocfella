@@ -118,8 +118,8 @@ if((isset($_SESSION['employeeloginemail'])) &&(isset($_SESSION['employeeloginpas
         <th>Duration</th>
         <th>Amount</th>
         <th>Interest Rate</th>
-        <th>AccountName[Payout]</th>
-        <th>BankName[Payout]</th>
+        <th>Amount Earned</th>
+        <th>BankName[Pay]</th>
         <th>Already vetted by</th>
         <th>Vet by <?php echo $_SESSION["employeename"];   ?></th>
     </tr>   
@@ -145,13 +145,15 @@ if((isset($_SESSION['employeeloginemail'])) &&(isset($_SESSION['employeeloginpas
                $payquery = $connection->query($query2);
                $placement = $connection->query($query3);
                 while($rowplace =  $placement->fetch_assoc()){
+                    $int = ($rowplace['InterestRate']/100)* $rowplace['Amount'];
+                    $intscale =  (($int/365) * $rowplace['ProposedDuration']) + $rowplace['Amount'];
                     echo "<td>".$rowplace['ProposedDuration']." Days"."</td><td>"."&#8358;".$rowplace['Amount']."</td><td>".$rowplace['InterestRate'].'%'."</td>";
                     $query4 = "SELECT SupervisorName FROM supdashboard WHERE CustomerID = ".$row['ID'].";";
                     $supquery = $connection->query($query4);
                     while ($rowsup = $supquery->fetch_assoc()){
               
                         while ($rowpayout = $payquery->fetch_assoc()){
-                            echo "<td>".$rowpayout['AccNamePayout']."</td><td>".$rowpayout['BankNamePayout']."</td><td>".$rowsup['SupervisorName']."</td><td> <button class='btn btn-default btn-sm'><a href='ceoinsertdb.php?id=".$row['ID']."&verified=verified'>Verify</a></button></td></tr>";
+                            echo "<td>"."&#8358;".round($intscale,2)."</td><td>".$rowpayout['BankNamePayout']."</td><td>".$rowsup['SupervisorName']."</td><td> <button class='btn btn-default btn-sm'><a href='ceoinsertdb.php?id=".$row['ID']."&verified=verified'>Verify</a></button></td></tr>";
                         }
                     }
                 }

@@ -114,7 +114,7 @@ if((isset($_SESSION['employeeloginemail'])) &&(isset($_SESSION['employeeloginpas
         <th>Phone Number</th>
         <th>Office Address</th>
         <th>Duration</th>
-        <th>Amount</th>
+        <th>Amount Earned</th>
         <th>AccountNumber[Payout]</th>
         <th>AccountName[Payout]</th>
         <th>BankName[Payout]</th>
@@ -147,11 +147,13 @@ if((isset($_SESSION['employeeloginemail'])) &&(isset($_SESSION['employeeloginpas
                $payquery = $connection->query($query2);
                $placement = $connection->query($query3);
                 while($rowplace =  $placement->fetch_assoc()){
-                    echo "<td>".$rowplace['ProposedDuration']." Days"."</td><td>"."&#8358;".$rowplace['Amount']."</td>";
+                    $int = ($rowplace['InterestRate']/100)* $rowplace['Amount'];
+                    $intscale =  (($int/365) * $rowplace['ProposedDuration']) + $rowplace['Amount'];
+                    echo "<td>".$rowplace['ProposedDuration']." Days"."</td><td>"."&#8358;".round($intscale,2)."</td>";
                     $query4 = "SELECT CEOName FROM ceodashboard WHERE CustomerID = ".$row['ID'].";";
                     $trquery = $connection->query($query4);
                     while ($rowtr = $trquery->fetch_assoc()){
-          
+                        
                         while ($rowpayout = $payquery->fetch_assoc()){
                             echo "<td>".$rowpayout['AccNoPayout']."</td><td>".$rowpayout['AccNamePayout']."</td><td>".$rowpayout['BankNamePayout']."</td><td>".$rowtr['CEOName']."</td><td> <button class='btn btn-default btn-sm'><a href='treasuryinsertdb.php?id=".$row['ID']."&paid=paid'>Paid</a></button></td></tr>";
 

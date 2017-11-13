@@ -77,7 +77,7 @@ body{
    <tr> <th>Full Name</th>
         <th>Phone Number</th>
         <th>Duration</th>
-        <th>Amount</th>
+        <th>Amount Paid</th>
         <th>AccountNumber[Payout]</th>
         <th>AccountName[Payout]</th>
         <th>BankName[Payout]</th>
@@ -111,7 +111,9 @@ body{
                $payquery = $connection->query($query2);
                $placement = $connection->query($query3);
                while($rowplace =  $placement->fetch_assoc()){
-                echo "<td>".$rowplace['ProposedDuration']." Days"."</td><td>"."&#8358;".$rowplace['Amount']."</td>";
+                $int = ($rowplace['InterestRate']/100)* $rowplace['Amount'];
+                $intscale =  (($int/365) * $rowplace['ProposedDuration']) + $rowplace['Amount'];
+                echo "<td>".$rowplace['ProposedDuration']." Days"."</td><td>"."&#8358;".round($intscale,2)."</td>";
                 $query4 = "SELECT * FROM treasurydashboard WHERE CustomerID = ".$row['ID'].";";
                 $trquery = $connection->query($query4);
                 while ($rowtr = $trquery->fetch_assoc()){
